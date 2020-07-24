@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baghdad metro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js"></script>
+</head>
+<body class="bg">
+    
+
+    <div>
+        <canvas id="canvas" width="1000" height="800" style="width: 720px; float:left">
+            Your browser doesn't support canvas
+        </canvas>
+    </div>
+    <div class="data_container">
+        <h1>Baghdad Metro online monitor</h1>
+        <hr>
+        <label for="line_select">Metro line</label>
+        <select id="line_select" class="form-control" onchange="app.render(this.value)">
+            <option value=-1>All Line</option>
+            <option value=0>Line S1</option>
+            <option value=1>Line S2</option>
+            <option value=2>Line S3</option>
+            <option value=3>Line S4</option>
+            <option value=4>Line S5</option>
+            <option value=5>Line S6</option>
+            <option value=6>Line S7</option>
+            <option value=7>Line S8</option>
+            <option value=8>Line S9</option>
+            <option value=9>Line S10</option>
+        </select>
+        <div>
+            <br>
+            <div style="display: flex;">
+                <button class="button">Tips for using Baghdad Metro</button>
+                <button class="button">Tickets</button>
+                <button class="button">Parkings map</button>
+                <button class="button">Route/Station Information</button>
+                <button class="button">ViP Klawat</button>
+                <button class="button">Report issues</button>
+                <button class="button">Schedules</button>
+                <h4 class="separter">></h4>
+            </div>
+            <h4>
+                States:
+            </h4>
+            <div>
+                <h4 style="color: azure;">
+                    <p id="line_0">Train for line S1 is at station number <span class="tiny_separter" id="train_0">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_0">-</span> <span class="separter"></span></p>
+                    <p id="line_1">Train for line S2 is at station number <span class="tiny_separter" id="train_1">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_1">-</span> <span class="separter"></span></p>
+                    <p id="line_2">Train for line S3 is at station number <span class="tiny_separter" id="train_2">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_2">-</span> <span class="separter"></span></p>
+                    <p id="line_3">Train for line S4 is at station number <span class="tiny_separter" id="train_3">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_3">-</span> <span class="separter"></span></p>
+                    <p id="line_4">Train for line S5 is at station number <span class="tiny_separter" id="train_4">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_4">-</span> <span class="separter"></span></p>
+                    <p id="line_5">Train for line S6 is at station number <span class="tiny_separter" id="train_5">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_5">-</span> <span class="separter"></span></p>
+                    <p id="line_6">Train for line S7 is at station number <span class="tiny_separter" id="train_6">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_6">-</span> <span class="separter"></span></p>
+                    <p id="line_7">Train for line S8 is at station number <span class="tiny_separter" id="train_7">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_7">-</span> <span class="separter"></span></p>
+                    <p id="line_8">Train for line S9 is at station number <span class="tiny_separter" id="train_8">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_8">-</span> <span class="separter"></span></p>
+                    <p id="line_9">Train for line S10 is at station number <span class="tiny_separter" id="train_9">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_9">-</span> <span class="separter"></span></p>
+                </h4>
+            </div>
+            
+            <h4>
+                Topics:
+            </h4>
+            <hr>
+            <section>
+                <dl style="display: flex">
+                <dt>April 21,2020</dt>
+                <dd><a href="#" class="news_line">BAGHDAD SUPPORTERS PASS The release of this special IC pass for international visitors to Iraq has been postponed.</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>March 24,2020</dt>
+                <dd><a href="#" class="news_line">Greater BAGHDAD Pass now issued on PASMO PASSPORT rechargeable smart cards</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>March 12,2020</dt>
+                <dd><a href="#" class="news_line">BAGHDAD Metro will commence a service through which QR codes can be used to issue "BAGHDAD Subway Tickets" at ticket vending machines for travelers!</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>January 14,2020</dt>
+                <dd><a href="#" class="news_line">BAGHDAD Metro and the Bureau of Transportation of BAGHDAD Metropolitan Government Will Jointly Carry Out Subway Manners Awareness Campaign</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>September 11,2019</dt>
+                <dd><a href="#" class="news_line">"BAGHDAD Metro--The Underground Mysteries 2019"Puzzle-Solving &amp; City Exploration Game event</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>August 9,2019</dt>
+                <dd><a href="#" class="news_line">PASMO PASSPORT Launches Sunday, September 1</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>July 18,2019</dt>
+                <dd><a href="#" class="news_line">BAGHDAD SUPPORTERS PASS  Special IC Pass for International Visitors to Iraq in the Summer of 2020</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>July 11,2019</dt>
+                <dd><a href="#" class="news_line">~3 Popular Sanrio Characters All on 1 Card!~ IC Card Ticket with Special Benefits Exclusively for Foreign Visitors PASMO PASSPORT to Be Released This Fall!</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>March 28,2019</dt>
+                <dd><a href="#" class="news_line">BAGHDAD Metro train operators (on one-man-operated routes)will begin providing information with the use of iPads.</a></dd>
+                </dl>
+                <dl style="display: flex">
+                <dt>October 11,2017</dt>
+                <dd><a href="#" class="news_line">BAGHDAD Metro will expand the number of locations where its "BAGHDAD Subway Ticket" special passenger tickets for foreign visitors to Iraq can be purchased!</a></dd>
+                </dl>
+                </section>
+
+            <p>
+                2020 Baghdad Metro monitor - Ministry of Klawat
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let app = new Metro();
+    </script>
+</body>
+</html>

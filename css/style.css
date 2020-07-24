@@ -1,0 +1,42 @@
+body{
+}
+
+canvas{
+    background-image: url("../map/bg.png");
+    background-position: center;
+    background-size: 100% 100%;
+    border-radius: 2%;
+    margin: 1em;
+    width: 50%;
+}
+
+.bg{
+    background-color: #262626;
+}
+
+.data_container{
+    margin: 1em;
+    color: antiquewhite;
+}
+
+.separter{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.tiny_separter{
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+.form-control{
+    padding: 0.5em;
+    margin-top: 0.5em;
+    display: block;
+    width: 20em;
+}
+
+.button{
+    width: 10em;
+    padding: 0.2em;
+    margin-top: 0.5em;
+}
