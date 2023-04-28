@@ -1,21 +1,164 @@
 class Metro {
     constructor() {
+
         this.imageDpi = 200;
-        this.map = [[[788,715],[788,676],[773,659],[758,641],[742,622],[727,607],[712,588],[696,562],[696,537],[695,492],[655,447],[638,448],[609,447],[554,464],[528,492],[498,502],[455,504],[427,504],[390,507],[355,507],[324,505],[299,437],[299,405],[300,370],[335,321],[361,290],[384,264],[415,229]],[[749,166],[733,185],[718,202],[703,218],[688,236],[671,256],[656,274],[640,290],[623,308],[604,333],[577,360],[555,384],[525,420],[495,439],[470,440],[443,440],[391,440],[354,438],[329,438],[301,439],[261,437],[230,437],[208,429],[200,394],[199,359],[200,324],[198,289],[199,254]],[[593,535],[639,484],[654,448],[656,413],[632,368],[602,334],[572,299],[524,282],[479,298],[447,333],[423,359],[400,386],[393,412],[393,438],[408,484],[427,501],[483,568],[523,582],[569,562],[593,536]],[[928,539],[896,539],[867,540],[834,540],[804,539],[771,539],[735,538],[694,537],[665,510],[640,483],[626,466],[609,449],[588,421],[556,385],[540,368],[526,352],[509,334],[478,299],[461,283],[446,264],[431,246],[415,227],[392,201],[378,185],[351,178]],[[689,165],[670,184],[656,201],[639,219],[625,237],[610,251],[595,272],[570,296],[548,327],[524,350],[510,367],[496,424],[496,503],[496,544],[482,565],[448,580],[408,579],[368,580],[340,579],[304,581],[277,579],[245,578],[214,579],[166,561],[135,562]],[[850,412],[835,430],[818,448],[804,465],[788,483],[773,500],[757,518],[734,539],[698,537],[665,535],[633,535],[594,535],[554,519],[530,488],[495,439],[479,370],[463,349],[447,334],[403,282],[384,264]],[[626,112],[610,132],[593,149],[578,166],[561,185],[547,201],[532,220],[524,245],[525,279],[525,350],[523,420],[553,461],[579,492],[595,535],[572,623],[532,640],[501,640],[449,607],[447,579]],[[797,183],[770,211],[750,238],[726,264],[703,289],[678,319],[656,343],[636,371],[618,385],[601,405],[586,421],[551,463],[529,487],[505,516],[498,545],[498,617],[501,640],[500,668],[498,702],[499,729],[498,753],[502,752]],[[522,175],[521,210],[524,245],[524,280],[508,334],[476,369],[455,395],[444,439],[427,506],[391,502],[371,544],[369,580],[362,614],[345,633],[329,650],[315,668],[300,684],[283,703],[265,724]], [[703,412],[657,412],[619,386],[554,384],[521,419],[494,425],[455,397],[425,361],[371,319],[333,323],[308,319],[279,320],[251,322],[222,332],[199,359],[175,386],[153,413],[129,439]]];
-        this.colors = ['#f35d10', '#e10765', '#ffc038', '#0091cf', '#19864d', '#7eca36', '#1d409c', '#943904', '#5c085e', '#f191ac'];
+        this.metro_data = [];
+
         this.activeColor = '#ffff00';
-        this.whereTrainAt = [Math.floor(Math.random() * this.map[0].length), Math.floor(Math.random() * this.map[1].length), Math.floor(Math.random() * this.map[2].length), Math.floor(Math.random() * this.map[3].length), Math.floor(Math.random() * this.map[4].length), Math.floor(Math.random() * this.map[5].length), Math.floor(Math.random() * this.map[6].length), Math.floor(Math.random() * this.map[7].length), Math.floor(Math.random() * this.map[8].length), Math.floor(Math.random() * this.map[9].length)];
+
+        this.selectedStation = -1;
+
+        this.whereTrainAt = [];
         this.trainDestination = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        this.trainSpeeds = [5000, 8000, 7000, 9000, 4000, 6800, 6600, 3300, 4600, 2100];
         this.intervals = [];
 
         this.can = document.getElementById('canvas');
         this.ctx = this.can.getContext('2d');
 
-        this.render(-1);
+
+        // reading the data into the merto data
+        fetch('data/data.json')
+        .then(response => response.json())
+        .then((data) => {
+            this.metro_data = data;
+            this.setData();
+            this.setElements();
+            this.render();
+        })
+        .catch(error => console.error(error));
+
+        //this.text();
     }
 
-    render(line) {
+    setData(){
+        this.whereTrainAt = [];
+        for (let index = 0; index < this.metro_data.length; index++) {
+            const element = this.metro_data[index];
+            this.whereTrainAt.push(
+                Math.floor(Math.random() * element.path.length)
+            );
+        }
+    }
+
+    setElements(){
+        // Elements that can must be filled
+        const lineSelect = document.getElementById('line_select');
+        const myTable = document.getElementById('myTable');
+
+        // Loop through the array 
+        for (let index = 0; index < this.metro_data.length; index++) {
+            // adding the select lines
+            const line = this.metro_data[index];
+            var option = document.createElement('option');
+            option.textContent = line.name;
+            option.value = index;
+            lineSelect.appendChild(option);
+            // adding the rows for states
+
+            // Create a new row element
+            const newRow = document.createElement('tr');
+            newRow.id = "line_" + index;
+
+            // Create new cell elements for the row
+            const cell1 = document.createElement('td');
+            const cell2 = document.createElement('td');
+            const cell3 = document.createElement('td');
+            const cell4 = document.createElement('td');
+
+            // Set the text content of the cells
+            cell1.textContent = '...';
+            cell1.id = "train_" + index;
+            cell1.className = "px-4 py-3";
+
+            cell2.textContent = '...';
+            cell2.id = "line_name_" + index;
+            cell2.className = "px-4 py-3 text-lg text-gray-900";
+
+            cell3.textContent = '...';
+            cell3.id = "station_name_" + index;
+            cell3.className = "px-4 py-3 text-lg text-gray-900";
+
+            cell4.textContent = '...';
+            cell4.id = "time_left_" + index;
+            cell4.className = "px-4 py-3";
+
+            // Append the cells to the row
+            newRow.appendChild(cell1);
+            newRow.appendChild(cell2);
+            newRow.appendChild(cell3);
+            newRow.appendChild(cell4);
+
+            // Append the row to the table body
+            const tableBody = document.getElementById('lines_tbody');
+            tableBody.appendChild(newRow);
+        }
+    }
+
+    setStationsData(line){
+        
+        const lineSelect = document.getElementById('station_select');
+
+        lineSelect.innerHTML = "";
+        
+        var option = document.createElement('option');
+        option.textContent = "All";
+        option.value = -1;
+        lineSelect.appendChild(option);
+
+
+        if (line > -1) {
+            for (let index = 0; index < this.metro_data[line].stations.length; index++) {
+                const element = this.metro_data[line].stations[index];
+    
+                var option = document.createElement('option');
+                option.textContent = element.name;
+                option.value = index;
+                option.selected = index == this.selectedStation;
+                lineSelect.appendChild(option);
+            }
+        }
+    }
+
+    setStation(){
+        const lineSelect = document.getElementById('station_select');
+        this.selectedStation = lineSelect.value;
+        this.render();
+    }
+
+    text(){
+        // Get canvas element
+        const canvas = document.getElementById('canvas');
+
+        // Set canvas dimensions
+        canvas.width = 500;
+        canvas.height = 500;
+
+        // Get canvas context
+        const context = canvas.getContext('2d');
+
+        // Set line properties
+        context.strokeStyle = '#000'; // Set stroke color
+        context.lineWidth = 5; // Set stroke width
+
+        // Draw a line
+        context.beginPath();
+        context.moveTo(100, 100); // Move to starting point (x,y)
+        context.lineTo(400, 400); // Draw line to ending point (x,y)
+        context.stroke(); // Draw the line
+
+    }
+
+    render() {
+        var line = document.getElementById("line_select").value;
+
+        if (line > -1) {
+            document.getElementById('line_viewed').textContent = this.metro_data[line].name;
+            this.setStationsData(line);
+        } else {
+            document.getElementById('line_viewed').textContent = "All";
+            this.selectedStation = -1;
+            this.setStationsData(line);
+        }
         let p = this;
         for (let index = 0; index < this.intervals.length; index++) {
             const element = this.intervals[index];
@@ -24,13 +167,16 @@ class Metro {
         }
         this.intervals = [];
         this.ctx.clearRect(0, 0, this.can.width, this.can.height);
-        for (let index = line < 0 ? 0 : line; index < this.map.length; index++) {
-            const element = this.map[index];
+
+        for (let index = line < 0 ? 0 : line; index < this.metro_data.length; index++) {
+            const element = this.metro_data[index].path;
+            
             this.renderLine(element, index);
             this.renderStations(element, index);
+
             let t = setInterval(function () {
                 p.moveTrain(index);
-            }, this.trainSpeeds[index]);
+            }, this.metro_data[index].speed);
             this.intervals.push(t);
             if(line >= 0)
                 break;
@@ -48,9 +194,10 @@ class Metro {
             this.ctx.fillRect(line[0], line[1], 1, 1);
             this.ctx.lineWidth = 2;
             this.ctx.stroke();
+
         }
 
-        this.ctx.strokeStyle = this.colors[index];
+        this.ctx.strokeStyle = this.metro_data[index].color;
         this.ctx.lineWidth = 2;
         this.ctx.stroke();
     }
@@ -59,13 +206,48 @@ class Metro {
     renderStations(data, index) {
         for (let station = 0; station < data.length; station++) {
             let line = data[station];
-            this.ctx.beginPath();
-            this.ctx.arc(line[0], line[1], 3, 0, 2 * Math.PI);
-            this.ctx.lineWidth = 5;
-            this.ctx.strokeStyle = this.colors[index];
+
+            if(this.selectedStation == station){
+                this.drawStar(line[0], line[1], 5, 15, 10);
+            }else{
+                this.ctx.beginPath();
+                this.ctx.arc(line[0], line[1], 3, 0, 2 * Math.PI);
+                this.ctx.lineWidth = 5;
+                this.ctx.strokeStyle = this.metro_data[index].color;
+            }
+            
             this.ctx.stroke();
         }
     }
+
+    drawStar(cx,cy,spikes,outerRadius,innerRadius){
+        var rot=Math.PI/2*3;
+        var x=cx;
+        var y=cy;
+        var step=Math.PI/spikes;
+  
+        this.ctx.beginPath();
+        this.ctx.moveTo(cx,cy-outerRadius)
+        for(var i=0;i<spikes;i++){
+          x=cx+Math.cos(rot)*outerRadius;
+          y=cy+Math.sin(rot)*outerRadius;
+          this.ctx.lineTo(x,y)
+          rot+=step
+  
+          x=cx+Math.cos(rot)*innerRadius;
+          y=cy+Math.sin(rot)*innerRadius;
+          this.ctx.lineTo(x,y)
+          rot+=step
+        }
+        this.ctx.lineTo(cx,cy-outerRadius);
+        this.ctx.closePath();
+        this.ctx.lineWidth=5;
+        this.ctx.strokeStyle='green';
+        this.ctx.stroke();
+        this.ctx.fillStyle='skyblue';
+        this.ctx.fill();
+      }
+  
 
     stationColorChange(x, y, color) {
         this.ctx.beginPath();
@@ -87,7 +269,7 @@ class Metro {
 
 
    moveTrain(index){
-       let data = this.map[index];
+       let data = this.metro_data[index].path;
        let whereTrainAt = this.whereTrainAt[index];
        if(this.trainDestination == 0){
             whereTrainAt = whereTrainAt + 1;
@@ -108,13 +290,15 @@ class Metro {
        
        for (let i = 0; i < data.length; i++) {
            const element = data[i];
-           this.stationColorChange(element[0], element[1], this.colors[index]);
+           this.stationColorChange(element[0], element[1], this.metro_data[index].color);
        }
        
        this.stationColorChange(data[whereTrainAt][0], data[whereTrainAt][1], this.activeColor);
        document.getElementById('train_'+index).textContent = whereTrainAt;
-       document.getElementById('time_left_'+index).textContent = (this.trainSpeeds[index] / 1000) + " Min";
-       document.getElementById("line_"+index).style.display = "block";
+       document.getElementById('line_name_'+index).textContent = this.metro_data[index].name;
+       document.getElementById('station_name_'+index).textContent = this.metro_data[index].stations[whereTrainAt].name;
+       document.getElementById('time_left_'+index).textContent = (this.metro_data[index].speed / 1000) + " Min";
+       document.getElementById("line_"+index).style.display = "table-row";
 
        
    }

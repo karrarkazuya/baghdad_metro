@@ -1,122 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baghdad metro</title>
+    <title>Baghdad Metro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js"></script>
 </head>
+
+<style>
+    .background_gradient {
+        background-image: linear-gradient(to bottom, #ffffff, #f7ecfa, #fad6ea, #ffc0cf, #ffaca8, #f79e8e, #ec9372, #dd8956, #cf7b48, #c26c3a, #b45e2c, #a6501e);
+    }
+</style>
+
+
 <body class="bg">
-    
 
-    <div>
-        <canvas id="canvas" width="1000" height="800" style="width: 720px; float:left">
-            Your browser doesn't support canvas
-        </canvas>
+
+    <div id="container" class="">
+
+        <section class="text-gray-600 body-font overflow-hidden">
+
+
+            <div class="header_bg text-white pb-5">
+                <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+                    <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+                        <a class="mr-5 hover:text-gray-900">Announcements</a>
+                        <a class="mr-5 hover:text-gray-900">Cyber Station</a>
+                        <a class="mr-5 hover:text-gray-900">Tickets</a>
+                        <a class="hover:text-gray-900">Fares</a>
+                    </nav>
+                    <a
+                        class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+                        <img src="images/logo.svg" class="w-10 h-10 text-white p-1 bg-green-500 rounded-full" alt=""
+                            srcset="">
+                        <span class="ml-3 text-xl">Baghdad Metro</span>
+                    </a>
+                    <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                        <button
+                            class="text-black inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+                            Arabic
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-col text-center w-full my-20 py-20">
+                    <h2 class="text-ms text-green-500 tracking-widest font-medium title-font mb-1">
+                        Welcome To
+                    </h2>
+                    <h1 class="sm:text-4xl text-3xl font-large title-font mb-4 text-gray-100 font-bold">BAGHDAD METRO</h1>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base mb-1 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                        The Baghdad Metro is a modern rapid transit system serving the Iraqi capital of Baghdad. It is a
+                        convenient and affordable way to travel around the city, connecting major commercial and
+                        residential
+                        areas, as well as historical and cultural landmarks.
+                    </p>
+                    <h2 class="text-xl text-green-500 tracking-widest font-large title-font mb-1">
+                        Time <span id="time"></span>
+                    </h2>
+                </div>
+
+
+                <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 text-black">
+                    <div class="p-2 sm:w-1/4 w-full">
+                        <div class="bg-gray-100 rounded flex p-4 h-full items-center"><svg fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                class="text-green-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg><span class="title-font font-medium">
+                                Cyber Station
+                            </span></div>
+                    </div>
+                    <div class="p-2 sm:w-1/4 w-full">
+                        <div class="bg-gray-100 rounded flex p-4 h-full items-center"><svg fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                class="text-green-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg><span class="title-font font-medium">
+                                User Guides
+                            </span></div>
+                    </div>
+                    <div class="p-2 sm:w-1/4 w-full">
+                        <div class="bg-gray-100 rounded flex p-4 h-full items-center"><svg fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                class="text-green-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg><span class="title-font font-medium">
+                                Safety Environment
+                            </span></div>
+                    </div>
+                    <div class="p-2 sm:w-1/4 w-full">
+                        <div class="bg-gray-100 rounded flex p-4 h-full items-center"><svg fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                class="text-green-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg><span class="title-font font-medium">
+                                Tickets
+                            </span></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container px-5 py-24 mx-auto">
+                <div class="lg:w-4/5 mx-auto flex flex-wrap">
+                    <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+                        <h2 class="text-sm title-font text-gray-500 tracking-widest">
+                            Find Your Destination
+                        </h2>
+                        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
+                            Stations and Lines
+                        </h1>
+                        <div class="flex mb-4">
+                            <a class="flex-grow text-green-500 border-b-2 border-green-500 py-2 text-lg px-1">Quick
+                                Search</a>
+                            <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Advanced Lookup</a>
+                            <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Chat Support</a>
+                        </div>
+                        <p class="leading-relaxed mb-4">
+                            Select your line and station from the options below to plan your metro journey. Choose the
+                            line you wish to travel on and the station you want to start from or end at. Our metro
+                            system provides a fast and efficient way to get around the city, with frequent trains and
+                            easy-to-use stations.
+                        </p>
+                        <div class="flex border-t border-gray-200 py-2">
+                            <span class="text-gray-500">Station</span>
+                            <span class="ml-auto text-gray-900">
+                                <select id="station_select" onchange="app.setStation()">
+                                    <option value=-1>All Stations</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="flex border-t border-gray-200 py-2">
+                            <span class="text-gray-500">Line</span>
+                            <span class="ml-auto text-gray-900">
+                                <select id="line_select" onchange="app.render()">
+                                    <option value=-1>All Lines</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="flex mt-4">
+                            <span class="title-font font-medium text-2xl text-gray-900">
+                                Lines: <span id="line_viewed"></span>
+                            </span>
+                            <button
+                                class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">
+                                Reserve Ticket
+                            </button>
+                        </div>
+                    </div>
+                    <canvas id="canvas" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                        width="900" height="900">
+                        Your browser doesn't support canvas
+                    </canvas>
+                </div>
+            </div>
+
+            <section class="text-gray-600 body-font schedules_bg">
+                <div class="container px-5 py-24 mx-auto">
+                    <div class="flex flex-col text-center w-full mb-20">
+                        <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
+                            Schedules
+                        </h1>
+                        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                            Check the latest updates for your metro line with our schedule table.
+                            Stay informed about the status of your journey and plan your trip accordingly with ease.
+                        </p>
+                    </div>
+
+                    <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+                        <table class="table-auto w-full text-left whitespace-no-wrap rounded"
+                            style="background-color: #fcfcfc65;">
+                            <thead>
+                                <tr>
+                                    <th
+                                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
+                                        Line ID</th>
+                                    <th
+                                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                                        Line</th>
+                                    <th
+                                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                                        Station</th>
+                                    <th
+                                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                                        Next Station Reach</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lines_tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
+                        <a class="text-green-500 inline-flex items-center md:mb-2 lg:mb-0">
+                            Metro Guides
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <button
+                            class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">
+                            Report a delay
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="text-gray-600 body-font">
+                <div class="flex flex-col text-center w-full mt-20">
+                    <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
+                        Why Metro
+                    </h1>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                        We believe people should start using metro instead of cars and here are our top 4 reasons why
+                    </p>
+                </div>
+
+                <div class="container px-5 py-24 mx-auto flex flex-wrap">
+                    <div class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
+                        <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-green-500 text-white relative z-10 title-font font-medium text-sm">
+                            1</div>
+                        <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                            <div
+                                class="flex-shrink-0 w-24 h-24 bg-green-100 text-green-500 rounded-full inline-flex items-center justify-center">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                                <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                                    Fast and Efficient
+                                </h2>
+                                <p class="leading-relaxed">
+                                    Metro systems are designed to transport people quickly and efficiently through
+                                    cities. With dedicated tracks and high-speed trains, you can avoid traffic
+                                    congestion and arrive at your destination faster than driving or taking a bus.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+                        <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-green-500 text-white relative z-10 title-font font-medium text-sm">
+                            2</div>
+                        <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                            <div
+                                class="flex-shrink-0 w-24 h-24 bg-green-100 text-green-500 rounded-full inline-flex items-center justify-center">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                                <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                                    Cost-Effective
+                                </h2>
+                                <p class="leading-relaxed">
+                                    Using the metro can be a cost-effective alternative to other modes of
+                                    transportation. With a variety of fare options and discounts available, you can save
+                                    money on your daily commute or when traveling around the city.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+                        <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-green-500 text-white relative z-10 title-font font-medium text-sm">
+                            3</div>
+                        <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                            <div
+                                class="flex-shrink-0 w-24 h-24 bg-green-100 text-green-500 rounded-full inline-flex items-center justify-center">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="5" r="3"></circle>
+                                    <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                                <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                                    Environmentally Friendly
+                                </h2>
+                                <p class="leading-relaxed">
+                                    Metro systems are more environmentally friendly than cars or buses, as they produce
+                                    fewer greenhouse gas emissions and consume less energy per passenger. By using the
+                                    metro, you can help reduce air pollution and contribute to a cleaner, healthier
+                                    city.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
+                        <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-green-500 text-white relative z-10 title-font font-medium text-sm">
+                            4</div>
+                        <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                            <div
+                                class="flex-shrink-0 w-24 h-24 bg-green-100 text-green-500 rounded-full inline-flex items-center justify-center">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                                <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
+                                    Safe and Secure
+                                </h2>
+                                <p class="leading-relaxed">
+                                    Metro systems typically have dedicated security personnel and surveillance systems
+                                    to ensure the safety of passengers. With well-lit stations, clear signage, and
+                                    easy-to-use ticketing systems, you can feel confident and secure while traveling on
+                                    the metro.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section class="text-gray-600 body-font background_gradient py-20">
+
+                <div class="text-center text-white pb-20">
+                    <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
+                        TICKETS</h1>
+                    <p class="text-black text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+                        With online ticketing, you can avoid the crowds and start your
+                        metro journey smoothly and conveniently.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 px-6 xl:px-32">
+                    <div class="p-0 py-12">
+                        <div class="block rounded-lg shadow-lg bg-white h-full lg:rounded-tr-none lg:rounded-br-none">
+                            <div class="p-6 border-b border-gray-300 text-center">
+                                <p class="uppercase mb-4 text-sm">
+                                    <strong>Single Ride Tickets</strong>
+                                </p>
+                                <h3 class="text-2xl mb-6">
+                                    <strong>0.5 IQD</strong>
+                                </h3>
+
+                                <button type="button"
+                                    class="inline-block px-6 py-2.5 bg-transparent text-green-600 font-medium text-xs leading-tight uppercase rounded hover:text-green-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out w-full"
+                                    style="background-color: hsl(0, 0%, 95%)" data-mdb-ripple="true"
+                                    data-ripple-color="primary">
+                                    Buy
+                                </button>
+                            </div>
+                            <div class="p-6">
+                                <ol class="list-inside">
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Perfect for occasional or one-time riders.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        No expiration date.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Cheaper than buying multiple rides.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Can be easily shared with others.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0" style="z-index: 1;">
+                        <div class="block rounded-lg shadow-lg bg-white h-full z-10">
+                            <div class="p-6 border-b border-gray-300 text-center">
+                                <p class="uppercase mb-4 text-sm">
+                                    <strong>Daily Pass</strong>
+                                </p>
+                                <h3 class="text-2xl mb-6">
+                                    <strong>2 IQD</strong>
+                                </h3>
+
+                                <button type="button"
+                                    class="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out w-full">
+                                    Buy
+                                </button>
+                            </div>
+                            <div class="p-6">
+                                <ol class="list-inside">
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Unlimited rides for 24 hours from the time of purchase.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Cost-effective for a full day of metro travel.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Easy to use with no need to purchase multiple tickets.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Ideal for tourists or visitors exploring the city.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Saves time compared to purchasing tickets for each ride.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 py-12">
+                        <div class="block rounded-lg shadow-lg bg-white h-full lg:rounded-tl-none lg:rounded-bl-none">
+                            <div class="p-6 border-b border-gray-300 text-center">
+                                <p class="uppercase mb-4 text-sm">
+                                    <strong>Monthly Pass</strong>
+                                </p>
+                                <h3 class="text-2xl mb-6">
+                                    <strong>30 IQD</strong>
+                                </h3>
+
+                                <button type="button"
+                                    class="inline-block px-6 py-2.5 bg-transparent text-green-600 font-medium text-xs leading-tight uppercase rounded hover:text-green-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out w-full"
+                                    style="background-color: hsl(0, 0%, 95%)" data-mdb-ripple="true"
+                                    data-ripple-color="primary">
+                                    Buy
+                                </button>
+                            </div>
+                            <div class="p-6">
+                                <ol class="list-inside">
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Provides unlimited rides for a month.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Saves money compared to purchasing individual tickets daily.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Convenient and eliminates the need to purchase tickets daily.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Ideal for daily commuters who use the metro regularly.
+                                    </li>
+                                    <li class="mb-4 flex items-center">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check"
+                                            class="text-green-600 w-4 h-4 mr-2" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                            </path>
+                                        </svg>
+                                        Can be easily renewed online or at ticket vending machines.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="text-gray-600 body-font about_bg">
+                <div class="container px-5 py-24 mx-auto">
+                    <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            class="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
+                            <path
+                                d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
+                            </path>
+                        </svg>
+                        <p class="leading-relaxed text-lg text-gray-200 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                            This website is fake. there is no Baghdad metor and it's all made up.
+                            <br>
+                            <br>
+                            Living in Iraq, I am constantly reminded of the lack of a reliable public transportation
+                            system. While many cities around the world boast efficient metro and bus systems, we are
+                            left with nothing. The lack of infrastructure in our country is not only frustrating but
+                            also dangerous, with people forced to rely on private cars, taxis, or even walking for long
+                            distances.
+                            <br>
+                            <br>
+                            The government, which should be responsible for building and maintaining public
+                            infrastructure, seems to have little interest in the well-being of its citizens. Instead,
+                            corruption and political power struggles seem to be the order of the day, with little effort
+                            made to improve the lives of ordinary Iraqis.
+                            <br>
+                            <br>
+                            It is a shame that we are forced to live in a society where basic needs such as
+                            transportation are not met. The lack of a metro system or other reliable public
+                            transportation not only affects our ability to move around the city but also hinders our
+                            ability to access education, healthcare, and job opportunities.
+                            <br>
+                            <br>
+                            As someone who loves their country, it pains me to see our government failing us in such a
+                            fundamental way. I can only hope that someday, we will have leaders who prioritize the needs
+                            of the people and take action to improve our daily lives. Until then, we must continue to
+                            struggle and find ways to navigate this broken system as best we can. Unitl then I will
+                            still be dreaming.
+                        </p>
+                        <span class="inline-block h-1 w-10 rounded bg-green-500 mt-8 mb-6"></span>
+                        <h2 class="text-gray-100 font-medium title-font tracking-wider drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                            KARRAR S. HONI
+                        </h2>
+                        <p class="text-gray-100 text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                            Fullstack Software Engineer, Developer, and Architect
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </section>
     </div>
-    <div class="data_container">
-        <h1>Baghdad Metro online monitor</h1>
-        <hr>
-        <label for="line_select">Metro line</label>
-        <select id="line_select" class="form-control" onchange="app.render(this.value)">
-            <option value=-1>All Lines</option>
-            <option value=0>Line S1</option>
-            <option value=1>Line S2</option>
-            <option value=2>Line S3</option>
-            <option value=3>Line S4</option>
-            <option value=4>Line S5</option>
-            <option value=5>Line S6</option>
-            <option value=6>Line S7</option>
-            <option value=7>Line S8</option>
-            <option value=8>Line S9</option>
-            <option value=9>Line S10</option>
-        </select>
-        <div>
-            <br>
-            <div style="display: flex;">
-                <button class="button">Tips for using Baghdad Metro</button>
-                <button class="button">Tickets</button>
-                <button class="button">Parkings map</button>
-                <button class="button">Route/Station Information</button>
-                <button class="button">ViP Klawat</button>
-                <button class="button">Report issues</button>
-                <button class="button">Schedules</button>
-                <h4 class="separter"></h4>
-            </div>
-            <h4>
-                States:
-            </h4>
-            <div>
-                <h4 style="color: azure;">
-                    <p id="line_0">Train for line S1 is at station number <span class="tiny_separter" id="train_0">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_0">-</span> <span class="separter"></span></p>
-                    <p id="line_1">Train for line S2 is at station number <span class="tiny_separter" id="train_1">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_1">-</span> <span class="separter"></span></p>
-                    <p id="line_2">Train for line S3 is at station number <span class="tiny_separter" id="train_2">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_2">-</span> <span class="separter"></span></p>
-                    <p id="line_3">Train for line S4 is at station number <span class="tiny_separter" id="train_3">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_3">-</span> <span class="separter"></span></p>
-                    <p id="line_4">Train for line S5 is at station number <span class="tiny_separter" id="train_4">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_4">-</span> <span class="separter"></span></p>
-                    <p id="line_5">Train for line S6 is at station number <span class="tiny_separter" id="train_5">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_5">-</span> <span class="separter"></span></p>
-                    <p id="line_6">Train for line S7 is at station number <span class="tiny_separter" id="train_6">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_6">-</span> <span class="separter"></span></p>
-                    <p id="line_7">Train for line S8 is at station number <span class="tiny_separter" id="train_7">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_7">-</span> <span class="separter"></span></p>
-                    <p id="line_8">Train for line S9 is at station number <span class="tiny_separter" id="train_8">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_8">-</span> <span class="separter"></span></p>
-                    <p id="line_9">Train for line S10 is at station number <span class="tiny_separter" id="train_9">-</span>, Time left for next station is <span class="tiny_separter" id="time_left_9">-</span> <span class="separter"></span></p>
-                </h4>
-            </div>
-            
-            <h4>
-                Topics:
-            </h4>
-            <hr>
-            <section>
-                <dl style="display: flex">
-                <dt>April 21,2020</dt>
-                <dd><a href="#" class="news_line">BAGHDAD SUPPORTERS PASS The release of this special IC pass for international visitors to Iraq has been postponed.</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>March 24,2020</dt>
-                <dd><a href="#" class="news_line">Greater BAGHDAD Pass now issued on PASMO PASSPORT rechargeable smart cards</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>March 12,2020</dt>
-                <dd><a href="#" class="news_line">BAGHDAD Metro will commence a service through which QR codes can be used to issue "BAGHDAD Subway Tickets" at ticket vending machines for travelers!</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>January 14,2020</dt>
-                <dd><a href="#" class="news_line">BAGHDAD Metro and the Bureau of Transportation of BAGHDAD Metropolitan Government Will Jointly Carry Out Subway Manners Awareness Campaign</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>September 11,2019</dt>
-                <dd><a href="#" class="news_line">"BAGHDAD Metro--The Underground Mysteries 2019"Puzzle-Solving &amp; City Exploration Game event</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>August 9,2019</dt>
-                <dd><a href="#" class="news_line">PASMO PASSPORT Launches Sunday, September 1</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>July 18,2019</dt>
-                <dd><a href="#" class="news_line">BAGHDAD SUPPORTERS PASS  Special IC Pass for International Visitors to Iraq in the Summer of 2020</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>July 11,2019</dt>
-                <dd><a href="#" class="news_line">~3 Popular Sanrio Characters All on 1 Card!~ IC Card Ticket with Special Benefits Exclusively for Foreign Visitors PASMO PASSPORT to Be Released This Fall!</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>March 28,2019</dt>
-                <dd><a href="#" class="news_line">BAGHDAD Metro train operators (on one-man-operated routes)will begin providing information with the use of iPads.</a></dd>
-                </dl>
-                <dl style="display: flex">
-                <dt>October 11,2017</dt>
-                <dd><a href="#" class="news_line">BAGHDAD Metro will expand the number of locations where its "BAGHDAD Subway Ticket" special passenger tickets for foreign visitors to Iraq can be purchased!</a></dd>
-                </dl>
-                </section>
 
-            <p>
-                2020 Baghdad Metro monitor - Ministry of Klawat
-            </p>
+
+    <footer class="text-gray-600 body-font">
+        <div style="background-color: #343434;">
+            <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                    <img src="images/logo.svg" class="w-10 h-10 text-white p-1 bg-green-500 rounded-full" alt=""
+                        srcset="">
+
+                    <span class="ml-3 text-xl text-white">Baghdad Metro</span>
+                </a>
+                <p class="text-sm text-gray-300 sm:ml-6 sm:mt-0 mt-4">© 2023 Baghdad Metro —
+                    <a href="https://github.com/karrarkazuya/" rel="noopener noreferrer" class="text-gray-400 ml-1"
+                        target="_blank">@karrarkazuya</a>
+                </p>
+                <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                    <a class="text-gray-400" href="https://www.facebook.com/karrar.sattar.5/">
+                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            class="w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a class="ml-3 text-gray-400" href="https://www.instagram.com/karrar_kazuya/">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                        </svg>
+                    </a>
+                    <a class="ml-3 text-gray-400" href="https://www.linkedin.com/in/karrar-s-honi-918054a1/">
+                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                            <path stroke="none"
+                                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                            </path>
+                            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                        </svg>
+                    </a>
+                </span>
+            </div>
         </div>
-    </div>
+    </footer>
 
+
+    <script src="js/time.js"></script>
     <script>
         let app = new Metro();
     </script>
 </body>
+
 </html>
